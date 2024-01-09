@@ -33,7 +33,7 @@ def standardize_image(image):
     return (image - mean) / std_dev
 
 
-def video_to_frames(video_path, output_root_folder, start_time, end_time, class_name, type, interval_length=3, output_fps=14, size=(640, 480)):
+def video_to_frames(video_path, output_root_folder, start_time, end_time, class_name, type, interval_length=3, output_fps=14, size=(128,128)):
     if not os.path.isfile(video_path):
         print(f"Error: video file {video_path} does not exist.")
         return
@@ -94,7 +94,7 @@ def video_to_frames(video_path, output_root_folder, start_time, end_time, class_
                 if ret:
                     out.write(frame)
                     frame_counter += 1
-                    if frame_counter <= 41:
+                    if frame_counter <= 30:
 
                         # frame = normalize_image(frame)
                         frame = cv2.resize(frame, size)
